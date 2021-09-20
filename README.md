@@ -16,30 +16,31 @@
 ### Association
 
 - has_many : prototypes
+- has_many : comments
 
 ## prototypes テーブル
 
-| Column     | Type       | Options     |
-| ---------- | ---------- | ----------- |
-| title      | string     | null: false |
-| catch_copy | text       | null: false |
-| concept    | text       | null: false |
-| user       | references | null: false |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| title      | string     | null: false                    |
+| catch_copy | text       | null: false                    |
+| concept    | text       | null: false                    |
+| user       | references | null: false, foreign_key: true |
 
 ### Association
 
+- has_many : comments
+- belong_to : user
 
-## room_users テーブル
+## comments テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| text      | text       | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| prototype | references | null: false, foreign_key: true |
 
-## messages テーブル
+### Association
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+- belong_to :user
+- belong_to :prototypes
