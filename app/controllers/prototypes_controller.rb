@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+  before_action :user_signed_in?, except: :index
   before_action :set_prototype, only: [:edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
